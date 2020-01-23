@@ -4,9 +4,8 @@ namespace Geekbrains
 {
 	public sealed class Inventory : IInitialization
 	{
-		private Weapon[] _weapons = new Weapon[5];
+		private Weapon[] _weapons = new Weapon[3];
         private static int _weaponIndex = 0;
-        private static int _minWeaponIndex = 0;
         private static int _maxWeaponIndex = 2;
 
 		public Weapon[] Weapons => _weapons;
@@ -31,35 +30,33 @@ namespace Geekbrains
         /// Выбор оружия по номеру
         /// </summary>
         /// <param name="i">Номер оружия</param>
-        public static void SelectWeapon(int i)
+        public Weapon SelectWeapon(int i)
         {
-            if (i < _minWeaponIndex) i = _minWeaponIndex;
-            if (i > _maxWeaponIndex) i = _maxWeaponIndex;
-            ServiceLocator.Resolve<WeaponController>().Off();
-            var tempWeapon = ServiceLocator.Resolve<Inventory>().Weapons[i];
+            if (i < 0) i = 0;
+            if (i >= Weapons.Length) i = Weapons.Length - 1;
+
+            Weapon tempWeapon = ServiceLocator.Resolve<Inventory>().Weapons[i];
+
             if (tempWeapon != null)
             {
-                ServiceLocator.Resolve<WeaponController>().On(tempWeapon);
                 _weaponIndex = i;
+                return tempWeapon;
             }
+            else return ServiceLocator.Resolve<Inventory>().Weapons[0];
         }
 
-        public static void SelectNextWeapon()
+        public Weapon SelectNextWeapon()
         {
             _weaponIndex++;
-            SelectWeapon(_weaponIndex);
+            Weapon tempWeapon = SelectWeapon(_weaponIndex);
+            return tempWeapon;
         }
 
-        public static void SelectPreviousWeapon()
+        public Weapon SelectPreviousWeapon()
         {
             _weaponIndex--;
-            SelectWeapon(_weaponIndex);
-        }
-
-        public static void RemoveWeapon()
-        {
-            ServiceLocator.Resolve<WeaponController>().Off();
-            _weaponIndex = 0;
+            Weapon tempWeapon = SelectWeapon(_weaponIndex);
+            return tempWeapon;
         }
 	}
 }

@@ -22,36 +22,38 @@ namespace Geekbrains
                 ServiceLocator.Resolve<FlashLightController>().Switch(ServiceLocator.Resolve<Inventory>().FlashLight);
             }
 
-            //todo реализовать выбор оружия по колесику мыши - done
-
             if (Input.GetAxis("Mouse ScrollWheel") > 0)
             {
-                Inventory.SelectNextWeapon();
+                ServiceLocator.Resolve<WeaponController>().Off();
+                Weapon weapon = ServiceLocator.Resolve<Inventory>().SelectPreviousWeapon();
+                ServiceLocator.Resolve<WeaponController>().On(weapon);
             }
 
             if (Input.GetAxis("Mouse ScrollWheel") < 0)
             {
-                Inventory.SelectPreviousWeapon();
+                ServiceLocator.Resolve<WeaponController>().Off();
+                Weapon weapon = ServiceLocator.Resolve<Inventory>().SelectNextWeapon();
+                ServiceLocator.Resolve<WeaponController>().On(weapon);
             }
 
             if (Input.GetKeyDown(KeyCode.Mouse2))
             {
-                Inventory.RemoveWeapon();
+                ServiceLocator.Resolve<WeaponController>().Off();
             }
 
             if (Input.GetKeyDown(KeyCode.Alpha1))
             {
-                Inventory.SelectWeapon(0);
+                SelectionOfWeapon(0);
             }
 
             if (Input.GetKeyDown(KeyCode.Alpha2))
             {
-                Inventory.SelectWeapon(1);
+                SelectionOfWeapon(1);
             }
 
             if (Input.GetKeyDown(KeyCode.Alpha3))
             {
-                Inventory.SelectWeapon(2);
+                SelectionOfWeapon(2);
             }
 
             if (Input.GetMouseButton(_mouseButton))
@@ -72,6 +74,13 @@ namespace Geekbrains
             {
                 ServiceLocator.Resolve<WeaponController>().ReloadClip();
             }
+        }
+
+        private void SelectionOfWeapon(int i)
+        {
+            ServiceLocator.Resolve<WeaponController>().Off();
+            Weapon weapon = ServiceLocator.Resolve<Inventory>().SelectWeapon(i);
+            ServiceLocator.Resolve<WeaponController>().On(weapon);
         }
     }
 }
