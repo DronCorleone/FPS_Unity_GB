@@ -16,6 +16,7 @@ namespace Geekbrains
 		private StateBot _stateBot;
 		private Vector3 _point;
 		private float _stoppingDistance = 2.0f;
+        private float _maxVisionDistance = 10;
 
         public event Action<Bot> OnDieChange;
 
@@ -38,6 +39,9 @@ namespace Geekbrains
                         break;
 					case StateBot.Detected:
                         Color = Color.red;
+                        break;
+                    case StateBot.UnderDamage:
+                        Color = Color.blue;
                         break;
 					case StateBot.Died:
                         Color = Color.gray;
@@ -122,7 +126,17 @@ namespace Geekbrains
 					MovePoint(Target.position);
 				}
 
-                //todo Потеря персонажа
+                if (StateBot == StateBot.Detected && Vector3.Distance(transform.position, Target.position) >= _maxVisionDistance)
+                {
+                    //ResetStateBot();
+                    StateBot = StateBot.Patrol;
+                    _point = Patrol.GenericPoint(transform);
+                    MovePoint(_point);
+                    Agent.stoppingDistance = 0;
+                    // На данном этапе хотел просто сделать reset, но какого-то чёрта бот застывает и больше не патрулирует
+                    // Поэтому пока останется в таком виде
+                    // TODO решить проблему
+                }
             }
         }
 
@@ -133,11 +147,13 @@ namespace Geekbrains
 
 		private void SetDamage(InfoCollision info)
 		{
-            //todo реакциия на попадание  
 			if (Hp > 0)
 			{
+                StateBot = StateBot.UnderDamage;
 				Hp -= info.Damage;
 				return;
+                // Данная реализация состояния получения урона работает только пока бот не видит игрока
+                // TODO доработать
 			}
 
 			if (Hp <= 0)
