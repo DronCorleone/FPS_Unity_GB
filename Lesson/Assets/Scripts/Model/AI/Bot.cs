@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
 namespace Geekbrains
 {
-	public sealed class Bot : BaseObjectScene
+    public sealed class Bot : BaseObjectScene
 	{
 		public float Hp = 100;
 		public Vision Vision;
