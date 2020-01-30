@@ -126,5 +126,5 @@ MonoBehaviour:
   Rigidbody: {fileID: 0}
   Transform: {fileID: 0}
   _timeToDestruct: 10
-  _baseDamage: 100
+  _baseDamage: 200
   Type: 4
