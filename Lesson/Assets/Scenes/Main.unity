@@ -400,7 +400,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.1
-  far clip plane: 100
+  far clip plane: 200
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -1260,7 +1260,7 @@ MonoBehaviour:
     type: 3}
   AmmunitionTypes: 04000000
   _barrel: {fileID: 1283431773}
-  _force: 10000
+  _force: 50000
   _rechergeTime: 1
 --- !u!1001 &1623800109
 PrefabInstance:
