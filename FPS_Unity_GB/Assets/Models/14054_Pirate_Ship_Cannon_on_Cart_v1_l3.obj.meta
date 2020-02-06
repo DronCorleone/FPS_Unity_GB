@@ -3,7 +3,13 @@ guid: eee785bea3c1e74499fdb57c162f02b3
 ModelImporter:
   serializedVersion: 19300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 14054_Pirate_Ship_Cannon_on_Cart_barrelMat
+    second: {fileID: -3938659279518322482, guid: eee785bea3c1e74499fdb57c162f02b3,
+      type: 3}
   materials:
     materialImportMode: 1
     materialName: 0
