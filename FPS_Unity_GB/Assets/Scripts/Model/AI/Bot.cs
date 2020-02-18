@@ -8,14 +8,18 @@ namespace Geekbrains
 	{
 		public float Hp = 100;
 		public Vision Vision;
-		public Weapon Weapon; //todo с разным оружием 
+		//public Weapon Weapon;
 		public Transform Target { get; set; }
 		public NavMeshAgent Agent { get; private set; }
-		private float _waitTime = 3;
-		private StateBot _stateBot;
-		private Vector3 _point;
-		private float _stoppingDistance = 2.0f;
+
+        private StateBot _stateBot;
+        private Vector3 _point;
+        private Animator _animator;
+        private float _waitTime = 3;
+		private float _stoppingDistance = 1.5f;
         private float _maxVisionDistance = 10;
+        private string _isWalk = "IsWalk";
+        private string _isAttack = "IsAttack";
 
         public event Action<Bot> OnDieChange;
 
@@ -57,6 +61,7 @@ namespace Geekbrains
 		{
 			base.Awake();
 			Agent = GetComponent<NavMeshAgent>();
+            _animator = GetComponent<Animator>();
 		}
 
 		private void OnEnable()
@@ -64,8 +69,8 @@ namespace Geekbrains
             var bodyBot = GetComponentInChildren<BodyBot>();
             if (bodyBot != null) bodyBot.OnApplyDamageChange += SetDamage;
 
-            var headBot = GetComponentInChildren<HeadBot>();
-            if (headBot != null) headBot.OnApplyDamageChange += SetDamage;
+            //var headBot = GetComponentInChildren<HeadBot>();
+            //if (headBot != null) headBot.OnApplyDamageChange += SetDamage;
         }
 
         private void OnDisable()
@@ -73,8 +78,8 @@ namespace Geekbrains
             var bodyBot = GetComponentInChildren<BodyBot>();
             if (bodyBot != null) bodyBot.OnApplyDamageChange -= SetDamage;
 
-            var headBot = GetComponentInChildren<HeadBot>();
-            if (headBot != null) headBot.OnApplyDamageChange -= SetDamage;
+            //var headBot = GetComponentInChildren<HeadBot>();
+            //if (headBot != null) headBot.OnApplyDamageChange -= SetDamage;
         }
 
         public void Tick()
@@ -116,9 +121,11 @@ namespace Geekbrains
 				{
 					Agent.stoppingDistance = _stoppingDistance;
 				}
-				if (Vision.VisionM(transform, Target))
+				if (Vision.VisionM(transform, Target) && Vector3.Distance(transform.position, Target.position) <= _stoppingDistance)
 				{
-                    Weapon.Fire();
+                    _animator.SetBool(_isWalk, false);
+                    _animator.SetBool(_isAttack, true);
+                    //Weapon.Fire();
 				}
 				else
 				{
@@ -180,6 +187,7 @@ namespace Geekbrains
 		public void MovePoint(Vector3 point)
 		{
 			Agent.SetDestination(point);
+            _animator.SetBool(_isWalk, true);
 		}
 	}
 }
