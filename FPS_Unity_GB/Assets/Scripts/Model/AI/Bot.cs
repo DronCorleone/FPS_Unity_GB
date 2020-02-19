@@ -8,15 +8,15 @@ namespace Geekbrains
 	{
 		public float Hp = 100;
 		public Vision Vision;
-		//public Weapon Weapon;
-		public Transform Target { get; set; }
+        public Transform Target { get; set; }
 		public NavMeshAgent Agent { get; private set; }
 
         private StateBot _stateBot;
         private Vector3 _point;
         private Animator _animator;
         private float _waitTime = 3;
-		private float _stoppingDistance = 1.5f;
+		private float _stoppingDistance = 1.25f;
+        private float _attackDistance = 1.5f;
         private float _maxVisionDistance = 10;
         private string _isWalk = "IsWalk";
         private string _isAttack = "IsAttack";
@@ -32,25 +32,25 @@ namespace Geekbrains
 				switch (value)
 				{
 					case StateBot.None:
-						Color = Color.white;
-						break;
+						//Color = Color.white;
+                        break;
 					case StateBot.Patrol:
-                        Color = Color.green;
+                        //Color = Color.green;
                         break;
 					case StateBot.Inspection:
-                        Color = Color.yellow;
+                        //Color = Color.yellow;
                         break;
 					case StateBot.Detected:
-                        Color = Color.red;
+                        //Color = Color.red;
                         break;
                     case StateBot.UnderDamage:
-                        Color = Color.blue;
+                        //Color = Color.blue;
                         break;
 					case StateBot.Died:
-                        Color = Color.gray;
+                        //Color = Color.gray;
                         break;
 					default:
-                        Color = Color.white;
+                        //Color = Color.white;
                         break;
 				}
 
@@ -104,7 +104,8 @@ namespace Geekbrains
 							if (Vector3.Distance(_point, transform.position) <= 1)
 							{
 								StateBot = StateBot.Inspection;
-								Invoke(nameof(ResetStateBot), _waitTime);
+                                _animator.SetBool(_isWalk, false);
+                                Invoke(nameof(ResetStateBot), _waitTime);
 							}
 						}
 					}
@@ -121,27 +122,26 @@ namespace Geekbrains
 				{
 					Agent.stoppingDistance = _stoppingDistance;
 				}
-				if (Vision.VisionM(transform, Target) && Vector3.Distance(transform.position, Target.position) <= _stoppingDistance)
+				if (Vision.VisionM(transform, Target) && Vector3.Distance(transform.position, Target.position) <= (_stoppingDistance + 1f))
 				{
                     _animator.SetBool(_isWalk, false);
-                    _animator.SetBool(_isAttack, true);
-                    //Weapon.Fire();
 				}
 				else
 				{
 					MovePoint(Target.position);
 				}
 
+                if (StateBot == StateBot.Detected && Vector3.Distance(transform.position, Target.position) <= _attackDistance)
+                {
+                    Attack();
+                }
+
                 if (StateBot == StateBot.Detected && Vector3.Distance(transform.position, Target.position) >= _maxVisionDistance)
                 {
-                    //ResetStateBot();
                     StateBot = StateBot.Patrol;
                     _point = Patrol.GenericPoint(transform);
                     MovePoint(_point);
                     Agent.stoppingDistance = 0;
-                    // На данном этапе хотел просто сделать reset, но какого-то чёрта бот застывает и больше не патрулирует
-                    // Поэтому пока останется в таком виде
-                    // TODO решить проблему
                 }
             }
         }
@@ -188,6 +188,13 @@ namespace Geekbrains
 		{
 			Agent.SetDestination(point);
             _animator.SetBool(_isWalk, true);
-		}
+            _animator.SetBool(_isAttack, false);
+        }
+
+        public void Attack()
+        {
+            _animator.SetBool(_isWalk, false);
+            _animator.SetBool(_isAttack, true);
+        }
 	}
 }
