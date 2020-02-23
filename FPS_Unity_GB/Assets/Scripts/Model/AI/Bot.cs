@@ -12,6 +12,7 @@ namespace Geekbrains
 		public NavMeshAgent Agent { get; private set; }
 
         private StateBot _stateBot;
+        private RagdollController _ragdoll;
         private Vector3 _point;
         private Animator _animator;
         private float _waitTime = 3;
@@ -62,6 +63,7 @@ namespace Geekbrains
 			base.Awake();
 			Agent = GetComponent<NavMeshAgent>();
             _animator = GetComponent<Animator>();
+            _ragdoll = GetComponent<RagdollController>();
 		}
 
 		private void OnEnable()
@@ -166,19 +168,7 @@ namespace Geekbrains
 			{
 				StateBot = StateBot.Died;
 				Agent.enabled = false;
-				foreach (var child in GetComponentsInChildren<Transform>())
-				{
-					child.parent = null;
-
-					var tempRbChild = child.GetComponent<Rigidbody>();
-					if (!tempRbChild)
-					{
-						tempRbChild = child.gameObject.AddComponent<Rigidbody>();
-					}
-					//tempRbChild.AddForce(info.Dir * Random.Range(10, 300));
-					
-					Destroy(child.gameObject, 10);
-				}
+                _ragdoll.Die();
 
                 OnDieChange?.Invoke(this);
             }
