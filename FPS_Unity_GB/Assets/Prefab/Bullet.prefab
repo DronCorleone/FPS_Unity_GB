@@ -125,8 +125,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Rigidbody: {fileID: 0}
+  Transform: {fileID: 0}
   _timeToDestruct: 10
-  _baseDamage: 10
+  _baseDamage: 100
   Type: 4
 --- !u!1 &6585420648893291224
 GameObject:
