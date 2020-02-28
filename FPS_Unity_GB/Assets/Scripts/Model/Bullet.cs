@@ -6,7 +6,6 @@ namespace Geekbrains
     {
         private void OnCollisionEnter(Collision collision)
         {
-            // дописать доп урон
             var tempObj = collision.gameObject.GetComponent<ISetDamage>();
 
             if (tempObj != null)

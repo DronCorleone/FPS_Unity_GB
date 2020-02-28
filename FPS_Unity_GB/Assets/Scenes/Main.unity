@@ -22550,11 +22550,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Rigidbody: {fileID: 0}
   Transform: {fileID: 0}
-  Ammunition: {fileID: 8901952978020707258, guid: ca1df36b30204724cb8eb4f5b1163491,
+  Ammunition: {fileID: 4011959633812030206, guid: 2cef6aa9d4eee664a88e70f61f613bb2,
     type: 3}
   AmmunitionTypes: 04000000
   _barrel: {fileID: 1876150430}
-  _force: 999
+  _force: 1000
   _rechergeTime: 0.2
 --- !u!1001 &1814568872
 PrefabInstance:
@@ -23216,13 +23216,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1876150429}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.75}
+  m_LocalRotation: {x: 0, y: -0.01745245, z: 0, w: 0.99984777}
+  m_LocalPosition: {x: 0.5, y: 0, z: 0.5}
   m_LocalScale: {x: 50, y: 50, z: 50}
   m_Children: []
   m_Father: {fileID: 437425750}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -2, z: 0}
 --- !u!1001 &1876557172
 PrefabInstance:
   m_ObjectHideFlags: 0
