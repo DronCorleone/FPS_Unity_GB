@@ -16,10 +16,10 @@ namespace Geekbrains
         public void Execute()
         {
             if (!IsActive) return;
-            if (Input.GetKeyDown(_activeFlashLight))
-            {
-                ServiceLocator.Resolve<FlashLightController>().Switch(ServiceLocator.Resolve<Inventory>().FlashLight);
-            }
+            //if (Input.GetKeyDown(_activeFlashLight))
+            //{
+            //    ServiceLocator.Resolve<FlashLightController>().Switch(ServiceLocator.Resolve<Inventory>().FlashLight);
+            //}
 
             if (Input.GetAxis("Mouse ScrollWheel") > 0)
             {

@@ -10,7 +10,7 @@ namespace Geekbrains
 
 		public Weapon[] Weapons => _weapons;
 
-		public FlashLightModel FlashLight { get; private set; }
+		//public FlashLightModel FlashLight { get; private set; }
 
 		public void Initialization()
 		{
@@ -22,8 +22,8 @@ namespace Geekbrains
 				weapon.IsVisible = false;
 			}
 
-			FlashLight = Object.FindObjectOfType<FlashLightModel>();
-			FlashLight.Switch(FlashLightActiveType.Off);
+			//FlashLight = Object.FindObjectOfType<FlashLightModel>();
+			//FlashLight.Switch(FlashLightActiveType.Off);
 		}
 
         /// <summary>
