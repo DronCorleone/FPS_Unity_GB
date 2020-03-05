@@ -68,7 +68,7 @@ public class MainMenu : BaseMenu
 
     #region New
 
-    [SerializeField] private GameObject _mainPanale;
+    [SerializeField] private GameObject _mainPanel;
 
     [SerializeField] private ButtonUI _newGame;
     [SerializeField] private ButtonUI _continue;
@@ -86,7 +86,7 @@ public class MainMenu : BaseMenu
         _continue.GetText.text = LangManager.Instance.Text("MainMenuItems", "Continue");
         _continue.SetInteractable(false);
         _options.GetText.text = LangManager.Instance.Text("MainMenuItems", "Options");
-        _options.SetInteractable(true);
+        _options.GetControl.onClick.AddListener(ShowOptions);
 
         _quit.GetText.text = LangManager.Instance.Text("MainMenuItems", "Quit");
         _quit.GetControl.onClick.AddListener(delegate
@@ -100,7 +100,7 @@ public class MainMenu : BaseMenu
     public override void Hide()
     {
         if (!IsShow) return;
-        _mainPanale.gameObject.SetActive(false);
+        _mainPanel.gameObject.SetActive(false);
         //Clear(_elementsOfInterface);
         IsShow = false;
     }
@@ -108,7 +108,7 @@ public class MainMenu : BaseMenu
     public override void Show()
     {
         if (IsShow) return;
-        _mainPanale.gameObject.SetActive(true);
+        _mainPanel.gameObject.SetActive(true);
         //var tempMenuItems = System.Enum.GetNames(typeof(MainMenuItems));
         //CreateMenu(tempMenuItems);
         IsShow = true;

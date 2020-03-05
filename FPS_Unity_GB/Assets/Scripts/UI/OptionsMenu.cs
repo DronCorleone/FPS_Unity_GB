@@ -1,4 +1,5 @@
-﻿using UnityEngine.EventSystems;
+﻿using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class OptionsMenu : BaseMenu
 {
@@ -57,9 +58,29 @@ public class OptionsMenu : BaseMenu
         }
         if (_elementsOfInterface.Length < 0) return;
         _elementsOfInterface[0].Control.Select();
-        _elementsOfInterface[0].Control.OnSelect(new
-        BaseEventData(EventSystem.current));
+        _elementsOfInterface[0].Control.OnSelect(new BaseEventData(EventSystem.current));
     }
+
+
+    [SerializeField] private GameObject _optionsPanel;
+
+    [SerializeField] private ButtonUI _video;
+    [SerializeField] private ButtonUI _sound;
+    [SerializeField] private ButtonUI _game;
+    [SerializeField] private ButtonUI _back;
+
+
+    private void Start()
+    {
+        _video.GetText.text = LangManager.Instance.Text("OptionsMenuItems", "Video");
+        _video.SetInteractable(false);
+        _sound.GetText.text = LangManager.Instance.Text("OptionsMenuItems", "Sound");
+        _sound.SetInteractable(false);
+        _game.GetText.text = LangManager.Instance.Text("OptionsMenuItems", "Game");
+        _game.SetInteractable(false);
+        _back.GetText.text = LangManager.Instance.Text("OptionsMenuItems", "Back");
+    }
+
     private void LoadVideoOptions()
     {
         Interface.Execute(InterfaceObject.VideoOptions);
