@@ -86,7 +86,7 @@ public class MainMenu : BaseMenu
         _continue.GetText.text = LangManager.Instance.Text("MainMenuItems", "Continue");
         _continue.SetInteractable(false);
         _options.GetText.text = LangManager.Instance.Text("MainMenuItems", "Options");
-        _options.SetInteractable(false);
+        _options.SetInteractable(true);
 
         _quit.GetText.text = LangManager.Instance.Text("MainMenuItems", "Quit");
         _quit.GetControl.onClick.AddListener(delegate

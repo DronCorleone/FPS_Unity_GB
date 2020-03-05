@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Settings>
+
+  <meta>
+    <Name>Dron Corleone</Name>
+    <language>English</language>
+  </meta>
+
+  <group id="MainMenuItems">
+
+    <string id="NewGame">
+      <text>New Game</text>
+    </string>
+    
+    <string id="Continue">
+      <text>Continue</text>
+    </string>
+
+    <string id="Options">
+      <text>Options</text>
+    </string>
+
+    <string id="Quit">
+      <text>Quit</text>
+    </string>
+
+  </group>
+
+  <group id="OptionsMenuItems">
+
+    <string id="Video">
+      <text>Video</text>
+    </string>
+
+    <string id="Sound">
+      <text>Sound</text>
+    </string>
+
+    <string id="Game">
+      <text>Game settings</text>
+    </string>
+
+    <string id="Back">
+      <text>Back</text>
+    </string>
+
+  </group>
+  
+  <group id="VideoOptionsMenuItems">
+
+    <string id="CurrentName">
+      <text>Graphics level</text>
+    </string>
+
+    <string id="SoftParticles">
+      <text>Soft particles</text>
+    </string>
+
+    <string id="ShadowQuality">
+      <text>Shadow quality</text>
+    </string>
+
+    <string id="SaveAndReturn">
+      <text>Save and return</text>
+    </string>
+
+    <string id="Back">
+      <text>Back</text>
+    </string>
+
+  </group>
+  
+  <group id="QualityNames">
+
+    <string id="Very Low">
+      <text>Very Low</text>
+    </string>
+
+    <string id="Low">
+      <text>Low</text>
+    </string>
+
+    <string id="Medium">
+      <text>Medium</text>
+    </string>
+
+    <string id="High">
+      <text>High</text>
+    </string>
+
+    <string id="Very High">
+      <text>Very High</text>
+    </string>
+
+    <string id="Ultra">
+      <text>Ultra</text>
+    </string>
+
+  </group>
+  
+  <group id="GameOptions">
+
+    <string id="Flashlight">
+      <text>On/Off Flashlight</text>
+    </string>
+
+    <string id="Back">
+      <text>Back</text>
+    </string>
+
+    <string id="Select">
+      <text>Enter value</text>
+    </string>
+
+  </group>
+
+  <group id="AudioMenuItems">
+
+    <string id="Background">
+      <text>Background music</text>
+    </string>
+    
+    <string id="SoundVolume">
+      <text>Sound Volume</text>
+    </string>
+
+    <string id="Back">
+      <text>Back</text>
+    </string>
+
+  </group>
+
+  <group id="MenuPause">
+
+    <string id="Resume">
+      <text>Resume</text>
+    </string>
+
+    <string id="Save">
+      <text>Save</text>
+    </string>
+
+    <string id="Options">
+      <text>Options</text>
+    </string>
+
+    <string id="MainMenu">
+      <text>Main Menu</text>
+    </string>
+
+    <string id="Quit">
+      <text>Quit</text>
+    </string>
+
+  </group>
+
+  <group id="OptionsPauseMenu">
+
+    <string id="SetColor">
+      <text>Set Color</text>
+    </string>
+
+    <string id="Back">
+      <text>Back</text>
+    </string>
+
+  </group>
+
+</Settings>
