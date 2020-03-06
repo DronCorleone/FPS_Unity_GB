@@ -79,6 +79,10 @@ public class OptionsMenu : BaseMenu
         _game.GetText.text = LangManager.Instance.Text("OptionsMenuItems", "Game");
         _game.SetInteractable(false);
         _back.GetText.text = LangManager.Instance.Text("OptionsMenuItems", "Back");
+        _back.GetControl.onClick.AddListener(delegate
+        {
+            Back();
+        });
     }
 
     private void LoadVideoOptions()
@@ -101,14 +105,16 @@ public class OptionsMenu : BaseMenu
     public override void Hide()
     {
         if (!IsShow) return;
-        Clear(_elementsOfInterface);
+        //Clear(_elementsOfInterface);
+        _optionsPanel.gameObject.SetActive(false);
         IsShow = false;
     }
     public override void Show()
     {
         if (IsShow) return;
-        var tempMenuItems = System.Enum.GetNames(typeof(OptionsMenuItems));
-        CreateMenu(tempMenuItems);
+        //var tempMenuItems = System.Enum.GetNames(typeof(OptionsMenuItems));
+        //CreateMenu(tempMenuItems);
+        _optionsPanel.gameObject.SetActive(true);
         IsShow = true;
     }
 }

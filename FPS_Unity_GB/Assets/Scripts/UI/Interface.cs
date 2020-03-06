@@ -56,9 +56,11 @@ public class Interface : MonoBehaviour
         {
             case InterfaceObject.MainMenu:
                 _currentMenu = _mainMenu;
+                _currentMenu.Show();
                 break;
             case InterfaceObject.OptionsMenu:
                 _currentMenu = _optionsMenu;
+                _currentMenu.Show();
                 break;
             //case InterfaceObject.VideoOptions:
             // if (_currentMenu != null) _currentMenu.Hide();
