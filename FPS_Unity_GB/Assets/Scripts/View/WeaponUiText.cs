@@ -12,9 +12,9 @@ namespace Geekbrains
 			_text = GetComponent<Text>();
 		}
 
-		public void ShowData(int countAmmunition, int countClip)
+		public void ShowData(int countAmmunition)
 		{
-			_text.text = $"{countAmmunition}/{countClip}";
+			_text.text = $"{countAmmunition}";
 		}
 
 		public void SetActive(bool value)

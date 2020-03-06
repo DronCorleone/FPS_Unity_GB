@@ -38,7 +38,6 @@ namespace Geekbrains
         {
             Destroy(gameObject, timeToDestruct);
             CancelInvoke(nameof(LossOfDamage));
-            // Вернуть в пул
         }
     }
 }

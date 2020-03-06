@@ -6,7 +6,6 @@ namespace Geekbrains
     {
         private KeyCode _activeFlashLight = KeyCode.F;
         private KeyCode _cancel = KeyCode.Escape;
-        private KeyCode _reloadClip = KeyCode.R;
         private int _mouseButton = (int)MouseButton.LeftButton;
 
         public InputController()
@@ -56,7 +55,7 @@ namespace Geekbrains
                 SelectionOfWeapon(2);
             }
 
-            if (Input.GetMouseButton(_mouseButton))
+            if (Input.GetMouseButtonDown(_mouseButton))
             {
                 if (ServiceLocator.Resolve<WeaponController>().IsActive)
                 {
@@ -68,11 +67,6 @@ namespace Geekbrains
             {
                 ServiceLocator.Resolve<WeaponController>().Off();
                 ServiceLocator.Resolve<FlashLightController>().Off();
-            }
-
-            if (Input.GetKeyDown(_reloadClip))
-            {
-                ServiceLocator.Resolve<WeaponController>().ReloadClip();
             }
         }
 
