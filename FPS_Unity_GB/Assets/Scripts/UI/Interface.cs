@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Geekbrains;
 
 public class Interface : MonoBehaviour
 {
@@ -19,7 +20,7 @@ public class Interface : MonoBehaviour
     //private VideoOptions _videoOptions;
     //private GameOptions _gameOptions;
     //private AudioOptions _audioOptions;
-    //private MenuPause _menuPause;
+    private PauseMenu _menuPause;
     //private OptionsPauseMenu _optionsPauseMenu;
     #endregion
     private void Start()
@@ -30,7 +31,7 @@ public class Interface : MonoBehaviour
         //_videoOptions = GetComponent<VideoOptions>();
         //_gameOptions = GetComponent<GameOptions>();
         //_audioOptions = GetComponent<AudioOptions>();
-        //_menuPause = GetComponent<MenuPause>();
+        _menuPause = GetComponent<PauseMenu>();
         //_optionsPauseMenu = GetComponent<OptionsPauseMenu>();
 
 
@@ -102,7 +103,6 @@ public class Interface : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            //
         }
     }
 

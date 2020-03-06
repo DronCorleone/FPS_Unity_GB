@@ -5,7 +5,7 @@ namespace Geekbrains
     public sealed class InputController : BaseController, IExecute
     {
         private KeyCode _activeFlashLight = KeyCode.F;
-        private KeyCode _cancel = KeyCode.Escape;
+        private KeyCode _pause = KeyCode.Escape;
         private int _mouseButton = (int)MouseButton.LeftButton;
 
         public InputController()
@@ -63,10 +63,8 @@ namespace Geekbrains
                 }
             }
 
-            if (Input.GetKeyDown(_cancel))
+            if (Input.GetKeyDown(_pause))
             {
-                ServiceLocator.Resolve<WeaponController>().Off();
-                ServiceLocator.Resolve<FlashLightController>().Off();
             }
         }
 

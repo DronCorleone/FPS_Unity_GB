@@ -20,5 +20,17 @@ namespace Geekbrains
                 _controllers[i].Execute();
             }
         }
+
+        public void GamePause()
+        {
+            Time.timeScale = 0;
+            Cursor.lockState = CursorLockMode.Confined;
+        }
+
+        public void GameResume()
+        {
+            Time.timeScale = 1;
+            Cursor.lockState = CursorLockMode.Locked;
+        }
     }
 }
