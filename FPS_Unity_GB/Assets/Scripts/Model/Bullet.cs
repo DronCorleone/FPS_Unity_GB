@@ -8,7 +8,7 @@ namespace Geekbrains
 
         private void OnCollisionEnter(Collision collision)
         {
-            Explosion.Explode(collision.contacts[0].point, Explosion.transform.rotation);
+            Instantiate(Explosion, collision.contacts[0].point, Explosion.transform.rotation);
 
             var tempObj = collision.gameObject.GetComponent<ISetDamage>();
 
