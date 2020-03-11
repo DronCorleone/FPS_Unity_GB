@@ -12,6 +12,7 @@ public class CameraController : MonoBehaviour
     private void Awake()
     {
         CanvasPanel.SetActive(false);
+        DOTween.SetTweensCapacity(1250, 50);
     }
 
     private void Update()
@@ -19,7 +20,7 @@ public class CameraController : MonoBehaviour
         transform.DOMove(_finalPosition, 2);
         transform.DORotate(_finalRotation, 2);
 
-        if (transform.position == _finalPosition)
+        if (transform.position.x >= _finalPosition.x - 0.01f)
         {
             CanvasPanel.SetActive(true);
         }

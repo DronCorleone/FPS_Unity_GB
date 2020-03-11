@@ -37,7 +37,7 @@
     </string>
 
     <string id="Game">
-      <text>Игровые настройки</text>
+      <text>Игра</text>
     </string>
 
     <string id="Back">
@@ -61,7 +61,7 @@
     </string>
 
     <string id="SaveAndReturn">
-      <text>Сохранить и выйти</text>
+      <text>Сохранить и назад</text>
     </string>
 
     <string id="Back">
