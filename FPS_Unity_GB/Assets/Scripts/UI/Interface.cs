@@ -78,11 +78,11 @@ public class Interface : MonoBehaviour
             // _currentMenu = _gameOptions;
             // _currentMenu.Show();
             // break;
-            //case InterfaceObject.MenuPause:
-            // if (_currentMenu != null) _currentMenu.Hide();
-            // _currentMenu = _menuPause;
-            // _currentMenu.Show();
-            // break;
+            case InterfaceObject.MenuPause:
+                if (_currentMenu != null) _currentMenu.Hide();
+                _currentMenu = _menuPause;
+                _currentMenu.Show();
+                break;
             //case InterfaceObject.OptionsPauseMenu:
             // if (_currentMenu != null) _currentMenu.Hide();
             // _currentMenu = _optionsPauseMenu;
