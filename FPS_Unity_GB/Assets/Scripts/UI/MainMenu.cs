@@ -77,6 +77,7 @@ public class MainMenu : BaseMenu
 
     private void Start()
     {
+        Time.timeScale = 1;
         _newGame.GetText.text = LangManager.Instance.Text("MainMenuItems", "NewGame");
         _newGame.GetControl.onClick.AddListener(delegate
         {
@@ -124,14 +125,14 @@ public class MainMenu : BaseMenu
 
     private void LoadNewGame(string lvl)
     {
-        //SceneManager.sceneLoaded += SceneManagerOnSceneLoaded;
+        //SceneManager.sceneLoaded -= SceneManagerOnSceneLoaded;
         Interface.LoadSceneAsync(lvl);
     }
 
-    //private void SceneManagerOnSceneLoaded(Scene arg0, LoadSceneMode arg1)
-    //{
-    //    Main.Instance.InitGame();
+    private void SceneManagerOnSceneLoaded(Scene arg0, LoadSceneMode arg1)
+    {
+        //Main.Instance.InitGame();
 
-    //    SceneManager.sceneLoaded -= SceneManagerOnSceneLoaded;
-    //}
+        SceneManager.sceneLoaded -= SceneManagerOnSceneLoaded;
+    }
 }

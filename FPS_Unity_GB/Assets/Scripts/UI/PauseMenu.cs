@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : BaseMenu
 {
@@ -95,7 +96,8 @@ public class PauseMenu : BaseMenu
 
     private void GoToMainMenu()
     {
-        Interface.LoadSceneAsync(Main.Instance.Scenes.MainMenu.SceneAsset.name);
+        ServiceLocator.ClearDictionary();
+        SceneManager.LoadScene(0);
     }
 
     public override void Hide()
