@@ -13,8 +13,7 @@ namespace Geekbrains
 
             if (tempObj != null)
             {
-                tempObj.SetDamage(new InfoCollision(_curDamage, collision.contacts[0], collision.transform,
-                    Rigidbody.velocity));
+                tempObj.SetDamage(new InfoCollision(_curDamage, collision.contacts[0], collision.transform));
             }
         }
     }

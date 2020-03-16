@@ -105,7 +105,7 @@ public class PauseMenu : BaseMenu
         Time.timeScale = 1;
 
         CharController.enabled = true;
-        ServiceLocator.Resolve<PlayerController>().On();
+        //ServiceLocator.Resolve<PlayerController>().On();
         ServiceLocator.Resolve<InputController>().On();
         ServiceLocator.Resolve<SelectionController>().On();
 
@@ -149,7 +149,7 @@ public class PauseMenu : BaseMenu
         Time.timeScale = 0;
 
         CharController.enabled = false;
-        ServiceLocator.Resolve<PlayerController>().Off();
+        //ServiceLocator.Resolve<PlayerController>().Off();
         ServiceLocator.Resolve<InputController>().Off();
         ServiceLocator.Resolve<SelectionController>().Off();
 
