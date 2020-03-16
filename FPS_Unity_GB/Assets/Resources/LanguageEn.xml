@@ -116,12 +116,16 @@
 
   <group id="AudioMenuItems">
 
-    <string id="Background">
-      <text>Background music</text>
+    <string id="Master">
+      <text>Master volume</text>
+    </string>
+
+    <string id="Music">
+      <text>Music volume</text>
     </string>
     
-    <string id="SoundVolume">
-      <text>Sound Volume</text>
+    <string id="Effects">
+      <text>Effects volume</text>
     </string>
 
     <string id="Back">

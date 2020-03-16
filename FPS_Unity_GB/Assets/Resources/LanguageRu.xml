@@ -116,12 +116,16 @@
 
   <group id="AudioMenuItems">
 
-    <string id="Background">
+    <string id="Master">
+      <text>Общая громкость</text>
+    </string>
+
+    <string id="Music">
       <text>Фоновая музыка</text>
     </string>
     
-    <string id="SoundVolume">
-      <text>Звуки</text>
+    <string id="Effects">
+      <text>Эффекты</text>
     </string>
 
     <string id="Back">

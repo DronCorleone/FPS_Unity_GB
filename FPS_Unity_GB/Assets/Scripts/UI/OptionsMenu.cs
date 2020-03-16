@@ -74,10 +74,16 @@ public class OptionsMenu : BaseMenu
     {
         _video.GetText.text = LangManager.Instance.Text("OptionsMenuItems", "Video");
         _video.SetInteractable(false);
+
         _sound.GetText.text = LangManager.Instance.Text("OptionsMenuItems", "Sound");
-        _sound.SetInteractable(false);
+        _sound.GetControl.onClick.AddListener(delegate
+        {
+            LoadSoundOptions();
+        });
+
         _game.GetText.text = LangManager.Instance.Text("OptionsMenuItems", "Game");
         _game.SetInteractable(false);
+
         _back.GetText.text = LangManager.Instance.Text("OptionsMenuItems", "Back");
         _back.GetControl.onClick.AddListener(delegate
         {

@@ -49,7 +49,13 @@ AudioMixerController:
   m_SuspendThreshold: -80
   m_EnableSuspend: 1
   m_UpdateMode: 0
-  m_ExposedParameters: []
+  m_ExposedParameters:
+  - guid: 8a0b66b23fcb9ae4ea3c2f79d71d9482
+    name: GameEffects
+  - guid: 848118207a86eb94091f96309eb4992f
+    name: Master
+  - guid: aeeacd2e062496d47839c0394b81e4da
+    name: Music
   m_AudioMixerGroupViews:
   - guids:
     - 37caff3ae89f8a645a4a2be4a5180279
@@ -57,7 +63,7 @@ AudioMixerController:
     - 563d54033f816584386fa7db1b1ec7f9
     name: View
   m_CurrentViewIndex: 0
-  m_TargetSnapshot: {fileID: 2521076972278825686}
+  m_TargetSnapshot: {fileID: 24500006}
 --- !u!243 &24300002
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
