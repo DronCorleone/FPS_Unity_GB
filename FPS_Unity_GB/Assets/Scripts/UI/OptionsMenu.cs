@@ -90,18 +90,22 @@ public class OptionsMenu : BaseMenu
         Interface.Execute(InterfaceObject.VideoOptions);
 
     }
+
     private void LoadSoundOptions()
     {
         Interface.Execute(InterfaceObject.AudioOptions);
     }
+
     private void LoadGameOptions()
     {
         Interface.Execute(InterfaceObject.GameOptions);
     }
+
     private void Back()
     {
         Interface.Execute(InterfaceObject.MainMenu);
     }
+
     public override void Hide()
     {
         if (!IsShow) return;
@@ -109,6 +113,7 @@ public class OptionsMenu : BaseMenu
         _optionsPanel.gameObject.SetActive(false);
         IsShow = false;
     }
+
     public override void Show()
     {
         if (IsShow) return;

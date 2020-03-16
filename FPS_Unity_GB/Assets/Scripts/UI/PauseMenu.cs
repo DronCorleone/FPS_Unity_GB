@@ -57,14 +57,17 @@ public class PauseMenu : BaseMenu
         _resume.GetText.text = LangManager.Instance.Text("MenuPause", "Resume");
         _resume.GetControl.onClick.AddListener(delegate
         {
-            Hide();
+            ResumeGame();
         });
 
         _save.GetText.text = LangManager.Instance.Text("MenuPause", "Save");
         _save.SetInteractable(false);
 
         _options.GetText.text = LangManager.Instance.Text("MenuPause", "Options");
-        _options.SetInteractable(false);
+        _options.GetControl.onClick.AddListener(delegate
+        {
+            LoadPauseMenuOptions();
+        });
 
         _mainMenu.GetText.text = LangManager.Instance.Text("MenuPause", "MainMenu");
         _mainMenu.GetControl.onClick.AddListener(delegate
@@ -85,7 +88,7 @@ public class PauseMenu : BaseMenu
         {
             if (IsShow)
             {
-                Hide();
+                ResumeGame();
             }
             else
             {
@@ -94,20 +97,9 @@ public class PauseMenu : BaseMenu
         }
     }
 
-    private void GoToMainMenu()
+    private void ResumeGame()
     {
-        ServiceLocator.ClearDictionary();
-        SceneManager.LoadScene(0);
-    }
-
-    public override void Hide()
-    {
-        if (!IsShow) return;
-
-        //UnPaused.TransitionTo(0.001f);
-
-        _pauseMenu.gameObject.SetActive(false);
-        _gamePanel.gameObject.SetActive(true);
+        Hide();
 
         Time.timeScale = 1;
 
@@ -118,6 +110,28 @@ public class PauseMenu : BaseMenu
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        _gamePanel.gameObject.SetActive(true);
+    }
+
+    private void GoToMainMenu()
+    {
+        ServiceLocator.ClearDictionary();
+        SceneManager.LoadScene(0);
+    }
+
+    private void LoadPauseMenuOptions()
+    {
+        Interface.Execute(InterfaceObject.OptionsPauseMenu);
+    }
+
+    public override void Hide()
+    {
+        if (!IsShow) return;
+
+        //UnPaused.TransitionTo(0.001f);
+
+        _pauseMenu.gameObject.SetActive(false);
 
         IsShow = false;
     }

@@ -21,7 +21,7 @@ public class Interface : MonoBehaviour
     //private GameOptions _gameOptions;
     //private AudioOptions _audioOptions;
     private PauseMenu _menuPause;
-    //private OptionsPauseMenu _optionsPauseMenu;
+    private OptionsPauseMenu _optionsPauseMenu;
     #endregion
     private void Start()
     {
@@ -32,7 +32,7 @@ public class Interface : MonoBehaviour
         //_gameOptions = GetComponent<GameOptions>();
         //_audioOptions = GetComponent<AudioOptions>();
         _menuPause = GetComponent<PauseMenu>();
-        //_optionsPauseMenu = GetComponent<OptionsPauseMenu>();
+        _optionsPauseMenu = GetComponent<OptionsPauseMenu>();
 
 
         if (_mainMenu)
@@ -83,11 +83,11 @@ public class Interface : MonoBehaviour
                 _currentMenu = _menuPause;
                 _currentMenu.Show();
                 break;
-            //case InterfaceObject.OptionsPauseMenu:
-            // if (_currentMenu != null) _currentMenu.Hide();
-            // _currentMenu = _optionsPauseMenu;
-            // _currentMenu.Show();
-            // break;
+            case InterfaceObject.OptionsPauseMenu:
+                if (_currentMenu != null) _currentMenu.Hide();
+                _currentMenu = _optionsPauseMenu;
+                _currentMenu.Show();
+                break;
             default:
                 break;
         }
