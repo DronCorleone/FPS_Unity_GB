@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class PauseMenu : BaseMenu
 {
@@ -24,12 +25,12 @@ public class PauseMenu : BaseMenu
     [SerializeField] private ButtonUI _mainMenu;
     [SerializeField] private ButtonUI _quit;
 
-    private CharacterController _charController;
-    private CharacterController CharController
+    private FirstPersonController _charController;
+    private FirstPersonController CharController
     {
         get
         {
-            return _charController ?? (_charController = FindObjectOfType<CharacterController>());
+            return _charController ?? (_charController = FindObjectOfType<FirstPersonController>());
         }
     }
 
