@@ -156,8 +156,8 @@
 
   <group id="OptionsPauseMenu">
 
-    <string id="SetColor">
-      <text>Изменить цвет</text>
+    <string id="Volume">
+      <text>Уровень звука</text>
     </string>
 
     <string id="Back">
