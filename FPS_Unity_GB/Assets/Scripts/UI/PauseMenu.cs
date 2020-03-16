@@ -34,23 +34,23 @@ public class PauseMenu : BaseMenu
         }
     }
 
-    //private AudioMixerSnapshot _paused;
-    //private AudioMixerSnapshot Paused
-    //{
-    //    get
-    //    {
-    //        return _paused ?? (_paused = Resources.Load<AudioMixer>("MainAudioMixer").FindSnapshot("Paused"));
-    //    }
-    //}
+    private AudioMixerSnapshot _paused;
+    private AudioMixerSnapshot Paused
+    {
+        get
+        {
+            return _paused ?? (_paused = Resources.Load<AudioMixer>("MainAudioMixer").FindSnapshot("Paused"));
+        }
+    }
 
-    //private AudioMixerSnapshot _unPaused;
-    //private AudioMixerSnapshot UnPaused
-    //{
-    //    get
-    //    {
-    //        return _unPaused ?? (_unPaused = Resources.Load<AudioMixer>("MainAudioMixer").FindSnapshot("UnPaused"));
-    //    }
-    //}
+    private AudioMixerSnapshot _unPaused;
+    private AudioMixerSnapshot UnPaused
+    {
+        get
+        {
+            return _unPaused ?? (_unPaused = Resources.Load<AudioMixer>("MainAudioMixer").FindSnapshot("UnPaused"));
+        }
+    }
 
 
     private void Start()
@@ -105,7 +105,6 @@ public class PauseMenu : BaseMenu
         Time.timeScale = 1;
 
         CharController.enabled = true;
-        //ServiceLocator.Resolve<PlayerController>().On();
         ServiceLocator.Resolve<InputController>().On();
         ServiceLocator.Resolve<SelectionController>().On();
 
@@ -130,7 +129,7 @@ public class PauseMenu : BaseMenu
     {
         if (!IsShow) return;
 
-        //UnPaused.TransitionTo(0.001f);
+        UnPaused.TransitionTo(0.001f);
 
         _pauseMenu.gameObject.SetActive(false);
 
@@ -141,7 +140,7 @@ public class PauseMenu : BaseMenu
     {
         if (IsShow) return;
 
-        //Paused.TransitionTo(0.001f);
+        Paused.TransitionTo(0.001f);
 
         _pauseMenu.gameObject.SetActive(true);
         _gamePanel.gameObject.SetActive(false);
@@ -149,7 +148,6 @@ public class PauseMenu : BaseMenu
         Time.timeScale = 0;
 
         CharController.enabled = false;
-        //ServiceLocator.Resolve<PlayerController>().Off();
         ServiceLocator.Resolve<InputController>().Off();
         ServiceLocator.Resolve<SelectionController>().Off();
 
