@@ -12,7 +12,6 @@ namespace Geekbrains
         public Controllers()
         {
             IMotor motor = new UnitMotor(ServiceLocatorMonoBehaviour.GetService<CharacterController>());
-            ServiceLocator.SetService(new PlayerController(motor));
             ServiceLocator.SetService(new FlashLightController());
             ServiceLocator.SetService(new InputController());
             ServiceLocator.SetService(new SelectionController());
@@ -20,17 +19,15 @@ namespace Geekbrains
             ServiceLocator.SetService(new Inventory());
             ServiceLocator.SetService(new BotController());
             
-            _executeControllers = new IExecute[5];
+            _executeControllers = new IExecute[4];
 
-            _executeControllers[0] = ServiceLocator.Resolve<PlayerController>();
+            _executeControllers[0] = ServiceLocator.Resolve<FlashLightController>();
 
-            _executeControllers[1] = ServiceLocator.Resolve<FlashLightController>();
-
-            _executeControllers[2] = ServiceLocator.Resolve<InputController>();
+            _executeControllers[1] = ServiceLocator.Resolve<InputController>();
             
-            _executeControllers[3] = ServiceLocator.Resolve<SelectionController>();
+            _executeControllers[2] = ServiceLocator.Resolve<SelectionController>();
             
-            _executeControllers[4] = ServiceLocator.Resolve<BotController>();
+            _executeControllers[3] = ServiceLocator.Resolve<BotController>();
         }
         
         public IExecute this[int index] => _executeControllers[index];
@@ -48,7 +45,6 @@ namespace Geekbrains
             ServiceLocator.Resolve<Inventory>().Initialization();
             ServiceLocator.Resolve<InputController>().On();
             ServiceLocator.Resolve<SelectionController>().On();
-            ServiceLocator.Resolve<PlayerController>().On();
             ServiceLocator.Resolve<BotController>().On();
         }
     }

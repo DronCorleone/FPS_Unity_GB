@@ -22,5 +22,10 @@ namespace Geekbrains
         {
             return (T)_servicecontainer[typeof(T)];
         }
+
+        public static void ClearDictionary()
+        {
+            _servicecontainer.Clear();
+        }
     }
 }

@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Settings>
+
+  <meta>
+    <Name>Dron Corleone</Name>
+    <language>Russian</language>
+  </meta>
+
+  <group id="MainMenuItems">
+
+    <string id="NewGame">
+      <text>Новая игра</text>
+    </string>
+    
+    <string id="Continue">
+      <text>Продолжить</text>
+    </string>
+
+    <string id="Options">
+      <text>Настройки</text>
+    </string>
+
+    <string id="Quit">
+      <text>Выход</text>
+    </string>
+
+  </group>
+
+  <group id="OptionsMenuItems">
+
+    <string id="Video">
+      <text>Видео</text>
+    </string>
+
+    <string id="Sound">
+      <text>Звук</text>
+    </string>
+
+    <string id="Game">
+      <text>Игра</text>
+    </string>
+
+    <string id="Back">
+      <text>Назад</text>
+    </string>
+
+  </group>
+  
+  <group id="VideoOptionsMenuItems">
+
+    <string id="CurrentName">
+      <text>Уровень графики</text>
+    </string>
+
+    <string id="SoftParticles">
+      <text>Мягкие частицы</text>
+    </string>
+
+    <string id="ShadowQuality">
+      <text>Качество теней</text>
+    </string>
+
+    <string id="SaveAndReturn">
+      <text>Сохранить и назад</text>
+    </string>
+
+    <string id="Back">
+      <text>Назад</text>
+    </string>
+
+  </group>
+  
+  <group id="QualityNames">
+
+    <string id="Very Low">
+      <text>Очень низкий</text>
+    </string>
+
+    <string id="Low">
+      <text>Низко</text>
+    </string>
+
+    <string id="Medium">
+      <text>Средне</text>
+    </string>
+
+    <string id="High">
+      <text>Высоко</text>
+    </string>
+
+    <string id="Very High">
+      <text>Очень высоко</text>
+    </string>
+
+    <string id="Ultra">
+      <text>Максимально</text>
+    </string>
+
+  </group>
+  
+  <group id="GameOptions">
+
+    <string id="Flashlight">
+      <text>Вкл/Выкл фонарь</text>
+    </string>
+
+    <string id="Back">
+      <text>Назад</text>
+    </string>
+
+    <string id="Select">
+      <text>Введите значение</text>
+    </string>
+
+  </group>
+
+  <group id="AudioMenuItems">
+
+    <string id="Master">
+      <text>Общая громкость</text>
+    </string>
+
+    <string id="Music">
+      <text>Фоновая музыка</text>
+    </string>
+    
+    <string id="Effects">
+      <text>Эффекты</text>
+    </string>
+
+    <string id="Back">
+      <text>Назад</text>
+    </string>
+
+  </group>
+
+  <group id="MenuPause">
+
+    <string id="Resume">
+      <text>Продолжить</text>
+    </string>
+
+    <string id="Save">
+      <text>Сохранить</text>
+    </string>
+
+    <string id="Options">
+      <text>Настройки</text>
+    </string>
+
+    <string id="MainMenu">
+      <text>Главное меню</text>
+    </string>
+
+    <string id="Quit">
+      <text>Выход из игры</text>
+    </string>
+
+  </group>
+
+  <group id="OptionsPauseMenu">
+
+    <string id="Volume">
+      <text>Уровень звука</text>
+    </string>
+
+    <string id="Back">
+      <text>Назад</text>
+    </string>
+
+  </group>
+
+</Settings>
