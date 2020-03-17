@@ -1,50 +1,83 @@
 ﻿using UnityEngine;
+using UnityEngine.Audio;
 
-public class OptionsPauseMenu : BaseMenu
+
+namespace Geekbrains
 {
-    enum OptionsPauseMenuItems
+    public class OptionsPauseMenu : BaseMenu
     {
-        Volume,
-        Back
-    }
-
-    [SerializeField] private GameObject _optionsPausePanel;
-
-    [SerializeField] private SliderUI _volume;
-    [SerializeField] private ButtonUI _back;
-
-    private void Start()
-    {
-        _optionsPausePanel.SetActive(true);
-
-        _volume.GetText.text = LangManager.Instance.Text("OptionsPauseMenu", "Volume");
-
-        _back.GetText.text = LangManager.Instance.Text("OptionsPauseMenu", "Back");
-        _back.GetControl.onClick.AddListener(delegate
+        enum OptionsPauseMenuItems
         {
-            Back();
-        });
+            Volume,
+            Back
+        }
 
-        _optionsPausePanel.SetActive(false);
+        private AudioMixer _audioMixer;
+        private AudioSettings _audioSettings;
 
-    }
+        [SerializeField] private GameObject _optionsPausePanel;
 
-    private void Back()
-    {
-        Interface.Execute(InterfaceObject.MenuPause);
-    }
+        [SerializeField] private SliderUI _volume;
+        [SerializeField] private ButtonUI _back;
 
-    public override void Hide()
-    {
-        if (!IsShow) return;
-        _optionsPausePanel.SetActive(false);
-        IsShow = false;
-    }
+        private void Start()
+        {
+            _optionsPausePanel.SetActive(true);
 
-    public override void Show()
-    {
-        if (IsShow) return;
-        _optionsPausePanel.SetActive(true);
-        IsShow = true;
+            _audioMixer = Resources.Load<AudioMixer>("MainAudioMixer");
+
+            _volume.GetText.text = LangManager.Instance.Text("OptionsPauseMenu", "Volume");
+            _volume.GetControl.minValue = -80;
+            _volume.GetControl.maxValue = 20;
+            _volume.GetControl.onValueChanged.AddListener(MasterVolume);
+
+            _back.GetText.text = LangManager.Instance.Text("OptionsPauseMenu", "Back");
+            _back.GetControl.onClick.AddListener(delegate
+            {
+                Back();
+            });
+
+            _optionsPausePanel.SetActive(false);
+
+        }
+
+        private void MasterVolume(float value)
+        {
+            _audioMixer.SetFloat("Master", value);
+        }
+
+        private void Save()
+        {
+            float master, effects, music;
+            _audioMixer.GetFloat("Master", out master);
+            _audioMixer.GetFloat("GameEffects", out effects);
+            _audioMixer.GetFloat("Music", out music);
+
+            _audioSettings = new AudioSettings
+            {
+                Master = master,
+                Effects = effects,
+                Music = music
+            };
+        }
+
+        private void Back()
+        {
+            Interface.Execute(InterfaceObject.MenuPause);
+        }
+
+        public override void Hide()
+        {
+            if (!IsShow) return;
+            _optionsPausePanel.SetActive(false);
+            IsShow = false;
+        }
+
+        public override void Show()
+        {
+            if (IsShow) return;
+            _optionsPausePanel.SetActive(true);
+            IsShow = true;
+        }
     }
 }

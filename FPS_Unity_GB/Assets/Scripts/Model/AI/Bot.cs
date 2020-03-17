@@ -11,6 +11,8 @@ namespace Geekbrains
         public Transform Target { get; set; }
 		public NavMeshAgent Agent { get; private set; }
 
+        private HeadBot _head;
+        private BodyBot _body;
         private StateBot _stateBot;
         private RagdollController _ragdoll;
         private Vector3 _point;
@@ -64,6 +66,8 @@ namespace Geekbrains
 			Agent = GetComponent<NavMeshAgent>();
             _animator = GetComponent<Animator>();
             _ragdoll = GetComponent<RagdollController>();
+            _head = GetComponentInChildren<HeadBot>();
+            _body = GetComponentInChildren<BodyBot>();
 		}
 
 		private void OnEnable()
@@ -169,6 +173,9 @@ namespace Geekbrains
 				StateBot = StateBot.Died;
 				Agent.enabled = false;
                 _ragdoll.Die();
+
+                Destroy(_head.gameObject.GetComponent<CapsuleCollider>());
+                Destroy(_body.gameObject.GetComponent<CapsuleCollider>());
 
                 OnDieChange?.Invoke(this);
             }
